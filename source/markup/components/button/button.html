@@ -1,0 +1,1 @@
+<{{#if type}}{{type}}{{#each attrs}} {{@key}}="{{this}}"{{/each}}{{else}}div{{/if}} class="button{{#each mod}} button_{{this}}{{/each}} {{action}}"{{#if actionId}} data-id="{{actionId}}"{{/if}}>{{{text}}}</{{#if type}}{{type}}{{else}}div{{/if}}>

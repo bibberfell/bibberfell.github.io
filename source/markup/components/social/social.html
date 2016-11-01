@@ -1,0 +1,9 @@
+{{#if this.length}}
+<ul class="social">
+{{#each this}}
+	<li class="social__item">
+		<a href="{{href}}" class="social__item-link{{#if mod}} social__item-link_{{mod}}{{/if}}"{{#is href '==' '#'}} data-share-network="{{mod}}"{{else}} target="_blank"{{/is}}></a>
+	</li>
+{{/each}}
+</ul>
+{{/if}}
