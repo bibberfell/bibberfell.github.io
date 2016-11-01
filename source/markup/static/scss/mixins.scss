@@ -1,6 +1,44 @@
-// Mixins.
+// @function svg-uri($svg) {
+//     $encoded: '';
+//     $slice: 2000;
+//     $index: 0;
+//     $loops: ceil(str-length($svg) / $slice);
 
-@mixin nl {
+//     @for $i from 1 through $loops {
+//         $chunk: str-slice($svg, $index, $index + $slice - 1);
+//         $chunk: str-replace($chunk, '"', "'");
+//         $chunk: str-replace($chunk, '<', '%3C');
+//         $chunk: str-replace($chunk, '>', '%3E');
+//         $chunk: str-replace($chunk, '&', '%26');
+//         $chunk: str-replace($chunk, '#', '%23');
+//         $encoded: #{$encoded}#{$chunk};
+//         $index: $index + $slice;
+//     }
+
+//     @return url("data:image/svg+xml;charset=utf8,#{$encoded}");
+// }
+
+// @function str-replace($string, $search, $replace: '') {
+//     $index: str-index($string, $search);
+
+//     @if $index {
+//         @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+//     }
+
+//     @return $string;
+// }
+
+
+// Common mixins
+//pseudo element (for before and after)
+@mixin pseudo($display: block, $position: absolute) {
+    position: $position;
+    display: $display;
+    content: '';
+}
+
+//non-ordered list
+@mixin nl { 
     margin: 0;
     padding: 0;
     text-indent: 0;
@@ -8,25 +46,81 @@
     list-style-position: outside;
 }
 
-@mixin cf {
-    &:before,
-    &:after {
-        display: table;
-        content: "";
+//transition
+@mixin trans($values...) { 
+    @if length($values) == 0 {
+        $values: .3s; //'all .3s ease' as default value
     }
-
-    &:after {
-        clear: both;
-    }
-
-    .lt-ie8 & {
-        zoom: 1;
-    }
+    transition: $values;
 }
 
-@mixin blocks-justify {
-    text-align: justify;
-    text-justify: newspaper;
+//border radius
+@mixin borrad($radius: 4px, $type: 'all') {
+    $radiusStr: $radius;
+    @if $type == 'right' {
+        $radiusStr: 0 $radius $radius 0
+    } @else if $type == 'top' {
+        $radiusStr: $radius $radius 0 0;
+    } @else if $type == 'left' {
+        $radiusStr: $radius 0 0 $radius;
+    }
+    border-radius: $radiusStr;
 }
 
-// You can add your own mixins here:
+// centered absolute sprite
+@mixin bgCentered($sprite) {
+    @include bg($sprite);
+    left: 50%;
+    top: 50%;
+    margin-left: -0.5*nth($sprite, 5);
+    margin-top: -0.5*nth($sprite, 6);
+}
+
+// color function
+@function clr($name) {
+    @if not map-has-key($colors, $name) {
+        @warn "No color found for `#{$name}` in $colors map. Property omitted.";
+    }
+    
+    @return map-get($colors, $name);
+}
+
+// z-index function
+@function z($layer) {
+    @if not map-has-key($z-layers, $layer) {
+        @warn "No layer found for `#{$layer}` in $z-layers map. Property omitted.";
+    }
+    
+    @return map-get($z-layers, $layer);
+}
+
+// typography
+@mixin typo-h1 {
+
+}
+@mixin typo-h2 {
+
+}
+@mixin typo-h3 {
+
+}
+@mixin typo-p {
+
+}
+@mixin typo-add {
+
+}
+@mixin typo-link {
+
+}
+@mixin typo-pseudo {
+
+}
+
+@mixin typo-underline($color: clr("black"), $indent: 0.1em, $pos: 1.3em, $depth: 1px) {
+    text-decoration: none;
+    background: linear-gradient(90deg, $color 100%, rgba($color, 0) 0) repeat-x;
+    background-size: 100% $depth;
+    background-position: 0 $pos;
+    padding-bottom: $indent;
+}

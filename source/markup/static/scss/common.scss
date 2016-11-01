@@ -1,4 +1,9 @@
 // Common styles of the project
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+}
 
 html, body {
     height: 100%;

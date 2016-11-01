@@ -20,7 +20,7 @@
             "content": ".__componentName__ {}"
         }, {
             "name": "__componentName__.js",
-            "content": ""
+            "content": "'use strict';"
         }
     ]
 }

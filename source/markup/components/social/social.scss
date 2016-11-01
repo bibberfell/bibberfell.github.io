@@ -1,0 +1,32 @@
+.social {
+    @include nl;
+    // text-align: center;
+    &__item {
+        display: inline-block;
+        margin: 0 7px;
+        position: relative;
+        &-link {
+            display: inline-block;
+            vertical-align: bottom;
+            @include trans;
+            &:before {
+                @include pseudo(block, relative);
+            }
+            &:hover {
+                opacity: .7;
+            }
+            @each $name, $img in 
+                (fb, $social_fb),
+                (youtube, $social_youtube),
+                (tw, $social_tw),
+                (vk, $social_vk) {
+                &_#{$name} {
+                    &:before {
+                        @include bg($img);
+                    }
+                }
+            }
+        }
+    }
+}
+

@@ -1,6 +1,6 @@
 head: {
     defaults: {
-        title: 'default title',
-        useSocialMetaTags: true
+        title: '!!! SET TITLE !!!',
+        useSocialMetaTags: false
     }
 }

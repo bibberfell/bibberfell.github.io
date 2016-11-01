@@ -1,0 +1,39 @@
+.icon {
+    display: inline-block;
+    @include trans();
+    position: relative;
+    &:after {
+        @include pseudo();
+        z-index: 1;
+    }
+    &[data-count]:before {
+        @include pseudo();
+        right: 3px;
+        top: 2px;
+        z-index: 2;
+        content: attr(data-count);
+        white-space: nowrap;
+        @include trans();
+    }
+    &:hover:before {
+        // background: $greenDark;
+    }
+    &_size {
+        
+    }
+    &_color {
+        //background
+    }
+    &_img {
+        // &_self {
+        //     &:after {
+        //         @include bgCentered($icon_img_self);
+        //     }
+        // }
+    }
+    &_type {
+        &_pointer {
+            cursor: pointer;
+        }
+    }
+}
