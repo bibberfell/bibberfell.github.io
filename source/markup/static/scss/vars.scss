@@ -1,6 +1,11 @@
 $colors: (
 	"black": #000,
 	"white": #fff,
+	"primary": #2A7C7C,	/* Main Primary color */
+	"bg": #ECF8F8,
+	"primaryLighter": #6AAEAE,
+	"primaryDarker": #0A5858,
+	"primaryDark": #001919
 );
 
 //z-indexes:
@@ -11,6 +16,8 @@ $z-layers: (
 	"below": -1,
 	"pit": -9000
 );
+
+
 
 //== Media queries breakpoints
 //

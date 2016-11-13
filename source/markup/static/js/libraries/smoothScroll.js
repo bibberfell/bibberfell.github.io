@@ -1,7 +1,7 @@
 function elmYPosition(eID) {
-    var elm = document.querySelector(eID);
-    var y = elm.offsetTop;
-    var node = elm;
+    let elm = document.querySelector(eID),
+        y = elm.offsetTop,
+        node = elm;
     while (node.offsetParent && node.offsetParent != document.body) {
         node = node.offsetParent;
         y += node.offsetTop;

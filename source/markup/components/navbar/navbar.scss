@@ -1,1 +1,38 @@
+.navbar {
+	padding: 10px 0 11px;
+	background: clr("primaryLighter");
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	&__container {
+		@include container;
 
+	}
+	&__logo {
+		@include typo-h3;
+		color: clr("bg");
+		text-decoration: none;
+		@include trans();
+		&:hover {
+			color: clr("white");
+		}
+	}
+	&__menu {
+		float: right;
+		@include nl;
+		&-item {
+			float: left;
+			margin: 0 0 0 30px;
+			@include typo-h3;
+		}
+		&-link {
+			color: clr("bg");
+			text-decoration: none;
+			@include trans();
+			&:hover {
+				color: clr("white");
+			}
+		}
+	}
+}

@@ -1,0 +1,12 @@
+.hero {
+	min-height: 100vh;
+	background: clr("primaryDark");
+	&__cont {
+		padding-top: 100px;
+		@include container;
+	}
+	&__header {
+		@include typo-h1;
+		color: clr("bg");
+	}
+}
